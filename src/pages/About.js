@@ -4,36 +4,31 @@ import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
 
 const SKILLS = [
-  { icon: '🌐', name: 'HTML5' },
-  { icon: '🎨', name: 'CSS3' },
-  { icon: '🟨', name: 'JavaScript' },
-  { icon: '🔷', name: 'TypeScript' },
-  { icon: '🔴', name: 'Angular' },
   { icon: '⚛️', name: 'React' },
   { icon: '🟢', name: 'Node.js' },
-  { icon: '🍃', name: 'MongoDB' },
-  { icon: '🐬', name: 'MySQL' },
+  { icon: '🔷', name: 'TypeScript' },
+  { icon: '🔥', name: 'Firebase' },
+  { icon: '🎨', name: 'HTML/CSS' },
+  { icon: '☁️', name: 'MySQL' },
   { icon: '🔀', name: 'GitHub' },
-  { icon: '💻', name: 'C++' },
-  { icon: '🧩', name: 'XAMPP' },
 ];
 
 const INTERESTS = [
-  { emoji: '🌐', name: 'Web Dev' },
-  { emoji: '🤖', name: 'AI / ML' },
+  { emoji: '🎮', name: 'Game Dev' },
+  { emoji: '🏀', name: 'Basketball' },
   { emoji: '📷', name: 'Photography' },
-  { emoji: '🎵', name: 'Music' },
+  { emoji: '🎵', name: 'Dance' },
   { emoji: '✈️', name: 'Travel' },
   { emoji: '🏋️', name: 'Fitness' },
   { emoji: '📚', name: 'Reading' },
-  { emoji: '🌍', name: 'Open Source' },
+  { emoji: '🎤', name: 'Event Management Volunteer' },
 ];
 
 const GOALS = [
-  { icon: '🚀', title: 'Launch a Web Product', desc: 'Build and ship a full-stack product that solves real user pain points.' },
-  { icon: '🧠', title: 'Master Backend Development', desc: 'Deepen expertise in Node.js, MongoDB, REST APIs and scalable architecture.' },
-  { icon: '👥', title: 'Collaborate on Real Projects', desc: 'Work with experienced developers to build impactful, production-grade applications.' },
-  { icon: '🌐', title: 'Contribute to Open Source', desc: 'Make meaningful contributions to open source projects in the JavaScript ecosystem.' },
+  { icon: '🚀', title: 'Build Scalable Full-Stack Applications', desc: 'Design and develop real-world applications focusing on performance, responsiveness and seamless user experience across devices.' },
+  { icon: '🧠', title: 'Advance in AI & Smart Systems', desc: 'Explore AI-powered solutions by integrating intelligent features such as automation, data-driven insights and real-time processing into applications.' },
+  { icon: '🔐', title: 'Work on Secure & Decentralized Systems', desc: 'Build on my experience by working with concepts like blockchain, authentication systems and privacy-focused architectures.' },
+  { icon: '🌐', title: 'Contribute to Real-World Projects', desc: 'Collaborate on impactful projects and continuously improve my skills through internships, open-source contributions and hands-on development.' },
 ];
 
 export default function About() {
@@ -41,9 +36,10 @@ export default function About() {
     <>
       <Helmet>
         <title>About | Ashritha Kudumula</title>
-        <meta name="description" content="Learn about Ashritha Kudumula — full-stack developer with experience in React, Angular, Node.js, MongoDB and modern web technologies." />
+        <meta name="description" content="Learn about Ashritha Kudumula — full-stack developer with experience in React, Node.js, Firebase and modern web technologies." />
       </Helmet>
 
+      {/* About Hero */}
       <section className="section" style={{ paddingTop: 140 }}>
         <div className="container">
           <div style={{ maxWidth: 780 }}>
@@ -53,26 +49,33 @@ export default function About() {
             </h1>
             <div className="about-text">
               <p>
-                Hey! I'm Ashritha Kudumula, a passionate full-stack developer currently pursuing
-                my Bachelor in Computer Applications at Christ (Deemed to be University), Bangalore.
-                I love building products that are both functional and visually stunning.
+                I am a first-year BCA student with a strong interest in web development and emerging technologies. 
+                I started exploring development through hands-on projects, where I learned how to build responsive interfaces and integrate real-time data.
+                I have gained practical experience in creating functional applications and working with modern frameworks.
               </p>
               <p>
-                My journey into development started with curiosity — that curiosity quickly turned
-                into building real projects like GlobeStay, a hotel reservation platform, and
-                B-Vikas, a digital identity protocol presented at a national SDG summit.
+                I am particularly interested in building full-stack web applications and exploring how AI can be integrated into real-world solutions. 
+                I enjoy working on projects that combine clean UI design with practical functionality. 
+                I am also curious about system design concepts like authentication, data flow and I actively learn by building and experimenting.
               </p>
               <p>
-                When I'm not coding, you'll find me exploring new technologies, listening to music,
-                or diving deep into whatever rabbit hole the internet has to offer that week.
+                My goal is to continuously grow as a developer by building impactful and user-focused applications. 
+                I aim to strengthen my skills in full-stack development and expand into AI-driven solutions. 
+                I am currently focused on improving my problem-solving skills, gaining hands-on experience and preparing myself for real-world development opportunities.
               </p>
             </div>
 
-            <Link to="/skills" className="btn-outline" style={{ marginTop: 32, display: 'inline-flex' }}>
+            {/* CTA to Skills & Journey */}
+            <Link
+              to="/skills"
+              className="btn-outline"
+              style={{ marginTop: 32, display: 'inline-flex' }}
+            >
               View My Skills &amp; Journey <FiArrowRight />
             </Link>
           </div>
 
+          {/* Skill Flashcards */}
           <div style={{ marginTop: 64 }}>
             <h3 style={{ marginBottom: 20, fontSize: '1rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
               Tech I Love
@@ -89,11 +92,14 @@ export default function About() {
         </div>
       </section>
 
+      {/* Interests */}
       <section className="section">
         <div className="container">
           <div className="section-label">Personal</div>
           <h2 className="section-title">Interests &amp; <span className="gradient-text">Hobbies</span></h2>
-          <p className="section-subtitle">Life's too short to only code. Here's what keeps me inspired outside the terminal.</p>
+          <p className="section-subtitle">
+            Life's too short to only code. Here's what keeps me inspired outside the terminal.
+          </p>
           <div className="interests-grid">
             {INTERESTS.map(({ emoji, name }) => (
               <div className="interest-card" key={name}>
@@ -105,11 +111,14 @@ export default function About() {
         </div>
       </section>
 
+      {/* Goals */}
       <section className="section">
         <div className="container">
           <div className="section-label">Vision</div>
           <h2 className="section-title">Future <span className="gradient-text">Goals</span></h2>
-          <p className="section-subtitle">Where I'm headed — the ambitions that drive me forward every day.</p>
+          <p className="section-subtitle">
+            Where I'm headed — the ambitions that drive me forward every day.
+          </p>
           <div className="goals-list" style={{ maxWidth: 700 }}>
             {GOALS.map(({ icon, title, desc }) => (
               <div className="goal-item" key={title}>

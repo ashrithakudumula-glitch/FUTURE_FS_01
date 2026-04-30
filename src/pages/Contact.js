@@ -5,14 +5,12 @@ import { sendContactMessage } from '../api/services';
 
 const CONTACT_INFO = [
   { icon: <FiMail />, label: 'Email', value: 'ashrithakudumula@gmail.com' },
-  { icon: <FiPhone />, label: 'Phone', value: '+91 XXXXX XXXXX' },
   { icon: <FiMapPin />, label: 'Location', value: 'Bangalore, India' },
 ];
 
 const SOCIALS = [
   { icon: <FiGithub />, href: 'https://github.com/ashrithakudumula-glitch', label: 'GitHub' },
-  { icon: <FiLinkedin />, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: <FiTwitter />, href: 'https://twitter.com', label: 'Twitter' },
+  { icon: <FiLinkedin />, href: 'http://www.linkedin.com/in/ashritha-kudumula-885bb73b4', label: 'LinkedIn' },
 ];
 
 export default function Contact() {

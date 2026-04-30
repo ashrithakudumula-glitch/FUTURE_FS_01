@@ -5,33 +5,34 @@ import { FiArrowRight, FiDownload, FiCode, FiLayout, FiServer, FiDatabase } from
 
 const TYPED_STRINGS = [
   'Full-Stack Developer',
-  'Angular Enthusiast',
-  'React Developer',
-  'Node.js Builder',
+  'AI-Driven Application Builder',
+  'Scalable System Explorer',
   'Problem Solver',
+  'Continuous Learner',
 ];
 
 const STATS = [
-  { num: '2+', label: 'Projects Shipped' },
-  { num: '16+', label: 'Technologies' },
-  { num: '2', label: 'Certifications' },
-  { num: '92%', label: '12th Boards' },
+  { num: '2+', label: 'Major Projects Built' },
+  { num: '5+', label: 'Technologies Used' },
+  { num: '3+', label: 'Domains Explored' },
+  { num: '100%', label: 'Learning Focused' },
 ];
 
 const ORBIT_ICONS = [
-  { icon: <FiCode />, label: 'Code' },
-  { icon: <FiLayout />, label: 'UI' },
-  { icon: <FiServer />, label: 'Backend' },
-  { icon: <FiDatabase />, label: 'DB' },
+  { icon: <FiCode />, label: 'JavaScript' },
+  { icon: <FiLayout />, label: 'UI/UX' },
+  { icon: <FiServer />, label: 'Node.js' },
+  { icon: <FiDatabase />, label: 'Firestore' },
 ];
 
 const TECH_PREVIEW = [
-  { emoji: '🔴', name: 'Angular' },
   { emoji: '⚛️', name: 'React' },
+  { emoji: '🖥️', name: 'HTML/CSS' },
+  { emoji: '🅰️', name: 'Angular' },
   { emoji: '🟢', name: 'Node.js' },
-  { emoji: '🍃', name: 'MongoDB' },
-  { emoji: '🔷', name: 'TypeScript' },
-  { emoji: '🔥', name: 'Express.js' },
+  { emoji: '🔥', name: 'Firebase' },
+  { emoji: '🗄️', name: 'MySQL' },
+  { emoji: '📘', name: 'JavaScript' },
 ];
 
 export default function Home() {
@@ -96,17 +97,14 @@ export default function Home() {
               </div>
 
               <p className="hero-desc">
-                A passionate full-stack developer building high-performance, visually stunning
-                web experiences with Angular, React, Node.js and MongoDB.
+                I build real-world web applications with a focus on clean design, scalability and seamless user experience 
+                while constantly learning and improving through hands-on projects.
               </p>
 
               <div className="hero-cta">
                 <Link to="/projects" className="btn-primary">
                   View My Work <FiArrowRight />
                 </Link>
-                <a href="/resume.pdf" download className="btn-outline">
-                  Download CV <FiDownload />
-                </a>
               </div>
 
               <div className="hero-stats">

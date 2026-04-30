@@ -29,7 +29,7 @@ const SKILL_CATEGORIES = [
     icon: <FiDatabase />,
     label: 'Databases',
     skills: [
-      
+      { name: 'Firebase / Firestore', pct: 85 },
       { name: 'MySQL / SQL', pct: 75 },
       { name: 'MongoDB', pct: 72 },
       
@@ -55,29 +55,36 @@ const SKILL_FLASHCARDS = [
   { icon: '🔴', name: 'Angular' },
   { icon: '⚛️', name: 'React' },
   { icon: '🟢', name: 'Node.js' },
-  
+  { icon: '🔥', name: 'Firebase' },
   { icon: '🐬', name: 'MySQL' },
-  { icon: '🍃', name: 'MongoDB' },
   { icon: '🗄️', name: 'SQL' },
   { icon: '🔀', name: 'GitHub' },
   { icon: '💻', name: 'C++' },
   { icon: '🧩', name: 'XAMPP' },
-  
-  { icon: '🧱', name: 'Hyperledger' },
-  { icon: '🛡️', name: 'ZKP' },
+  { icon: '🔐', name: 'Firebase' },
 ];
 
 // Only projects + certifications — no education entries
 const JOURNEY = [
   {
+    year: 'April 2026',
+    type: 'work',
+    icon: <FiBriefcase />,
+    role: 'Full-Stack Web Developer',
+    place: 'Future Interns',
+    location: 'Remote',
+    desc: 'Internship',
+    tags: ['Internship', 'Full-Stack Development', 'Web Development'],
+  },
+    {
     year: 'Mar 2026',
     type: 'work',
     icon: <FiBriefcase />,
     role: 'GlobeStay — Full-Stack Reservation System',
     place: 'Personal Project',
-    location: 'HTML · Angular · TypeScript · JavaScript',
-    desc: 'Built a responsive hotel reservation platform with multi-parameter search across 3+ filters (city, country, hotel name). Implemented real-time data sync and an end-to-end booking workflow — reducing manual input steps by 40–50%.',
-    tags: ['Angular', 'TypeScript', 'CSS3', 'JavaScript'],
+    location: 'HTML · Angular · TypeScript · Firebase',
+    desc: 'Built a responsive hotel reservation platform with multi-parameter search across 3+ filters (city, country, hotel name). Implemented real-time Firestore data sync, Firebase Authentication and an end-to-end booking workflow reducing manual input steps by 40–50%.',
+    tags: ['Angular', 'TypeScript', 'Firebase', 'CSS3', 'JavaScript'],
   },
   {
     year: 'Feb 2026',
@@ -86,7 +93,7 @@ const JOURNEY = [
     role: 'B-Vikas — Digital Identity Protocol',
     place: 'ECOTHON 2047 · PRITHVI 2026',
     location: 'HTML · CSS · JavaScript · Node.js',
-    desc: 'Co-developed a 5-layer digital verification architecture simulating a scalable DPI model. Integrated Aadhaar VID-based auth with AI-driven biometric liveness checks, a ZKP framework for privacy compliance (DPDP Act), and Hyperledger Fabric blockchain for immutable audit trails.',
+    desc: 'Co-developed a 5-layer digital verification architecture simulating a scalable DPI model. Integrated Aadhaar VID-based auth with AI-driven biometric liveness checks, a ZKP framework for privacy compliance (DPDP Act) and Hyperledger Fabric blockchain for immutable audit trails.',
     tags: ['Node.js', 'Blockchain', 'ZKP', 'API Gateway', 'Hyperledger'],
   },
   {
@@ -96,7 +103,7 @@ const JOURNEY = [
     role: 'HTML5, CSS3 and JavaScript',
     place: 'Infosys Springboard',
     location: 'Certification · 2026',
-    desc: 'Completed professional certification in core web technologies — covering modern HTML5 semantics, advanced CSS3 styling techniques, and JavaScript fundamentals for interactive web development.',
+    desc: 'Completed professional certification in core web technologies covering modern HTML5 semantics, advanced CSS3 styling techniques and JavaScript fundamentals for interactive web development.',
     tags: ['HTML5', 'CSS3', 'JavaScript'],
   },
   {
@@ -106,7 +113,7 @@ const JOURNEY = [
     role: 'ECOTHON — Certificate of Participation',
     place: 'SDG Summit · CHRIST University, Bangalore',
     location: 'PRITHVI 2026 · Feb 2026',
-    desc: 'Participated in ECOTHON, a national-level sustainability hackathon at CHRIST University. Presented B-Vikas — a digital identity solution addressing SDG goals through secure, privacy-preserving verification technology.',
+    desc: 'Participated in ECOTHON, a national-level sustainability hackathon at CHRIST University. Presented B-Vikas, a digital identity solution addressing SDG goals through secure, privacy-preserving verification technology.',
     tags: ['Hackathon', 'SDG', 'Innovation'],
   },
 ];
@@ -422,7 +429,6 @@ export default function SkillsJourney() {
               { num: '2+', label: 'Projects Shipped' },
               { num: '16+', label: 'Technologies' },
               { num: '2',   label: 'Certifications' },
-              { num: '92%', label: '12th Board Score' },
             ].map(({ num, label }) => (
               <div key={label}>
                 <div style={{

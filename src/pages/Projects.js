@@ -5,28 +5,28 @@ import { getProjects } from '../api/services';
 
 const FALLBACK_PROJECTS = [
   {
-    _id: '1',
+    id: '1',
     emoji: '🏨',
-    title: 'GlobeStay — Hotel Reservation System',
-    description: 'A responsive hotel reservation platform with multi-parameter search across 3+ filters. Real-time data sync, end-to-end booking workflow, and mobile-responsive UI.',
-    tags: ['Angular', 'TypeScript', 'JavaScript', 'CSS3'],
+    title: 'GlobeStay – Hotel Reservation Platform',
+    description:'Developed a full-stack hotel booking system with multi-parameter search (city, country, hotel), real-time data sync using Firebase, and a seamless end-to-end reservation workflow.',
+    tags: ['Angular', 'JavaScript', 'TypeScript', 'Firebase', 'CSS'],
     category: 'Full-Stack',
-    github: 'https://github.com/ashrithakudumula-glitch',
+    github: 'https://github.com/ashrithakudumula-glitch/globestay-bookings',
     live: '',
   },
   {
-    _id: '2',
-    emoji: '🛡️',
-    title: 'B-Vikas — Digital Identity Protocol',
-    description: 'A 5-layer digital verification architecture with Aadhaar VID-based auth, AI biometric liveness checks, Zero-Knowledge Proof framework, and Hyperledger Fabric blockchain audit trail.',
-    tags: ['Node.js', 'JavaScript', 'Blockchain', 'ZKP'],
-    category: 'Full-Stack',
-    github: 'https://github.com/ashrithakudumula-glitch',
-    live: '',
+    id: '2',
+    emoji: '🆔',
+    title: 'B-Vikas – Digital Identity Protocol',
+    description:'Built a secure digital identity system with Aadhaar-based verification, AI-driven biometric checks, and a blockchain-backed audit trail using Hyperledger Fabric.',
+    tags: ['Node.js', 'JavaScript', 'Blockchain', 'Hyperledger', 'APIs'],
+    category: 'Backend',
+    github: 'https://github.com/ashrithakudumula-glitch/B-VIKAS1',
+    live: 'https://b-vikas.netlify.app/',
   },
 ];
 
-const FILTERS = ['All', 'Full-Stack', 'Frontend', 'Backend'];
+const FILTERS = ['All', 'Full-Stack', 'Frontend', 'Backend', 'Firebase'];
 
 export default function Projects() {
   const [projects, setProjects] = useState(FALLBACK_PROJECTS);
@@ -65,7 +65,7 @@ export default function Projects() {
             Featured <span className="gradient-text">Projects</span>
           </h1>
           <p className="section-subtitle">
-            A collection of projects I've built and shipped. Each one taught me something new.
+            A curated collection of projects I've built.
           </p>
 
           <div className="projects-filter">
@@ -100,17 +100,23 @@ function ProjectCard({ project }) {
         <span style={{ position: 'relative', zIndex: 1 }}>{project.emoji || '💻'}</span>
         <div className="project-overlay">
           {project.github && (
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-overlay-btn"><FiGithub /></a>
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-overlay-btn">
+              <FiGithub />
+            </a>
           )}
           {project.live && (
-            <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-overlay-btn"><FiExternalLink /></a>
+            <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-overlay-btn">
+              <FiExternalLink />
+            </a>
           )}
         </div>
       </div>
 
       <div className="project-content">
         <div className="project-tags">
-          {(project.tags || []).map(tag => <span key={tag} className="project-tag">{tag}</span>)}
+          {(project.tags || []).map(tag => (
+            <span key={tag} className="project-tag">{tag}</span>
+          ))}
         </div>
         <h3 className="project-title">{project.title}</h3>
         <p className="project-desc">{project.description}</p>
@@ -119,10 +125,14 @@ function ProjectCard({ project }) {
       <div className="project-footer">
         <div className="project-links">
           {project.github && (
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link"><FiGithub /> GitHub</a>
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
+              <FiGithub /> GitHub
+            </a>
           )}
           {project.live && (
-            <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-link"><FiExternalLink /> Live Demo</a>
+            <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-link">
+              <FiExternalLink /> Live Demo
+            </a>
           )}
         </div>
         <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>

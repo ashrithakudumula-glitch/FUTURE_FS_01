@@ -29,7 +29,7 @@ export default function Navbar() {
     <>
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="navbar-inner">
-          <Link to="/" className="nav-logo">AJ.</Link>
+          <Link to="/" className="nav-logo">AK.</Link>
 
           <ul className="nav-links">
             {NAV_LINKS.map(({ path, label }) => (
