@@ -153,6 +153,7 @@ app.post('/api/auth/login', async (req, res) => {
 // ── CONTACT ───────────────────────────────────────────────────────────────────
 
 // POST /api/contact
+// ── CONTACT ───────────────────────────────────────────────────────────────────
 app.post('/api/contact', contactLimiter, async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
@@ -164,6 +165,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
       return res.status(400).json({ error: 'Invalid email address.' });
     }
 
+    // Save to MongoDB
     const msg = await Message.create({
       name, email,
       subject: subject || '(No subject)',
@@ -171,52 +173,37 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
       ip: req.ip,
     });
 
-    // Notify owner
-    await transporter.sendMail({
-      from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
-      to: process.env.OWNER_EMAIL || process.env.EMAIL_USER,
-      subject: `📬 New message from ${name}: ${subject || 'Portfolio Contact'}`,
-      html: `
-        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#0f0f0f;color:#f5f5f5;border-radius:12px;overflow:hidden;">
-          <div style="background:linear-gradient(135deg,#cc0000,#ff2222);padding:32px;text-align:center;">
-            <h1 style="margin:0;color:#fff;">New Portfolio Message</h1>
-          </div>
-          <div style="padding:32px;">
-            <p><strong>From:</strong> ${name}</p>
-            <p><strong>Email:</strong> <a href="mailto:${email}" style="color:#ff4444;">${email}</a></p>
-            <p><strong>Subject:</strong> ${subject || '(No subject)'}</p>
-            <div style="margin-top:16px;padding:16px;background:#1a1a1a;border-radius:8px;border-left:3px solid #ff2222;">
-              <p style="white-space:pre-wrap;">${message}</p>
-            </div>
-            <a href="mailto:${email}" style="display:inline-block;margin-top:20px;background:#ff2222;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;">Reply to ${name}</a>
-          </div>
-        </div>
-      `,
-    });
-
-    // Auto reply
-    await transporter.sendMail({
-      from: `"Ashritha Kudumula" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: `Got your message, ${name}! 👋`,
-      html: `
-        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#0f0f0f;color:#f5f5f5;border-radius:12px;overflow:hidden;">
-          <div style="background:linear-gradient(135deg,#cc0000,#ff2222);padding:32px;text-align:center;">
-            <h1 style="margin:0;color:#fff;">Thanks for reaching out!</h1>
-          </div>
-          <div style="padding:32px;line-height:1.8;">
-            <p>Hey ${name},</p>
-            <p>I've received your message and will get back to you within <strong style="color:#ff4444;">24 hours</strong>.</p>
-            <p>Best,<br/><strong>Ashritha Kudumula</strong></p>
-          </div>
-        </div>
-      `,
-    });
-
+    // Send success to user immediately
     res.json({ success: true, id: msg._id });
+
+    // Try sending emails in background
+    try {
+      await transporter.sendMail({
+        from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
+        to: process.env.OWNER_EMAIL || process.env.EMAIL_USER,
+        subject: `New message from ${name}`,
+        html: `<p><strong>From:</strong> ${name} (${email})</p><p><strong>Message:</strong> ${message}</p>`,
+      });
+    } catch (e) {
+      console.log('Owner email failed:', e.message);
+    }
+
+    try {
+      await transporter.sendMail({
+        from: `"Ashritha Kudumula" <${process.env.EMAIL_USER}>`,
+        to: email,
+        subject: `Got your message, ${name}!`,
+        html: `<p>Hey ${name}, I received your message and will get back to you within 24 hours!</p><p>Best,<br/>Ashritha Kudumula</p>`,
+      });
+    } catch (e) {
+      console.log('Auto reply failed:', e.message);
+    }
+
   } catch (err) {
     console.error('Contact error:', err);
-    res.status(500).json({ error: 'Failed to send message.' });
+    if (!res.headersSent) {
+      res.status(500).json({ error: 'Failed to send message.' });
+    }
   }
 });
 
