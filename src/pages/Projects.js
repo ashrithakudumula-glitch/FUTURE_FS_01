@@ -12,7 +12,7 @@ const FALLBACK_PROJECTS = [
     tags: ['Angular', 'JavaScript', 'TypeScript', 'Firebase', 'CSS'],
     category: 'Full-Stack',
     github: 'https://github.com/ashrithakudumula-glitch/globestay-bookings',
-    live: '',
+    live: 'https://globestay-1-mgnh.onrender.com',
   },
   {
     id: '2',
@@ -24,6 +24,16 @@ const FALLBACK_PROJECTS = [
     github: 'https://github.com/ashrithakudumula-glitch/B-VIKAS1',
     live: 'https://b-vikas.netlify.app/',
   },
+  {
+  id: '3',
+  emoji: '🗂️',
+  title: 'Mini CRM',
+  description: 'A full-stack CRM application to manage leads, track status pipelines, and add follow-up notes. Features a dashboard with analytics and a public contact form.',
+  tags: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Render'],
+  category: 'fullstack',
+  github: 'https://github.com/ashrithakudumula-glitch/FUTURE_FS_02',
+  live: 'https://future-fs-02-1-bg61.onrender.com',
+},
 ];
 
 const FILTERS = ['All', 'Full-Stack', 'Frontend', 'Backend', 'Firebase'];
