@@ -1,7 +1,33 @@
-# 🔴 Ashritha Kudumula — Portfolio
+# 🔴 Ashritha Kudumula — Full Stack Portfolio
 
-A professional, multi-page portfolio website with neon red theme, glassmorphism UI,
-particle animations, MongoDB + Node.js backend, and a full admin dashboard.
+A production-ready full-stack portfolio web application built with **React, Node.js, Express, and MongoDB Atlas**, featuring a modern animated UI and a secure admin dashboard to manage content dynamically.
+
+---
+
+## ✨ Features
+
+- 🔐 JWT-based authentication (Admin login)
+- 🛠 Admin dashboard (manage projects & messages)
+- 📂 Dynamic project management (CRUD)
+- 📬 Contact form with email notifications
+- 🍃 MongoDB Atlas database integration
+- ⚡ REST API architecture
+- 🎨 Neon red UI with glassmorphism & animations
+- 📱 Fully responsive design
+- 🛡️ Security: bcrypt, Helmet, CORS, rate limiting
+
+---
+
+## 🧑‍💻 Tech Stack
+
+| Layer | Technology |
+|------|------------|
+| Frontend | React.js, React Router |
+| Backend | Node.js, Express.js |
+| Database | MongoDB Atlas |
+| Auth | JWT + bcrypt |
+| Email | Nodemailer |
+| Deployment | Render |
 
 ---
 
@@ -37,28 +63,6 @@ portfolio/
     ├── package.json            ← Server dependencies
     └── .env.example            ← Environment variable template
 ```
-
----
-
-## ✨ Features
-
-- 🔴 **Neon red theme** — full spectrum from dark crimson to soft pink
-- 🌑 **Dark / Light mode** — persisted in localStorage
-- 🕸️ **Particle background** — canvas-based connected dot network
-- 🖱️ **Custom cursor** — dot + follower ring effect
-- 🃏 **Glassmorphism cards** — backdrop blur + neon border effects
-- 📊 **Animated skill bars** — IntersectionObserver triggered
-- 🏷️ **Skill flashcards** — hover glow effects
-- 🗺️ **Interactive timeline** — alternating left/right, filterable
-- 📱 **Fully responsive** — mobile nav, fluid layouts
-- 🔍 **SEO optimized** — react-helmet-async, JSON-LD structured data
-- 🎬 **Page loader** — animated red fill bar
-- 📜 **Scroll progress bar** — neon red top indicator
-- 🔐 **Admin dashboard** — JWT protected, message inbox + project CRUD
-- 🍃 **MongoDB Atlas** — stores contact messages, projects, project updates
-- 📧 **Email notifications** — owner alert + auto-reply on contact form
-- ⚡ **Rate limiting** — contact form: 5/hour, API: 100/15min
-- 🛡️ **Security** — Helmet.js, CORS, bcryptjs password hashing, JWT tokens
 
 ---
 
@@ -135,20 +139,13 @@ Run this **once** after starting the server to create your admin login:
 
 ```bash
 curl -X POST http://localhost:5000/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{
-    "email": "ashrithakudumula@gmail.com",
-    "password": "your_secure_password",
-    "secret": "your_admin_registration_secret"
-  }'
+-H "Content-Type: application/json" \
+-d '{
+  "email": "your_email",
+  "password": "your_password",
+  "secret": "your_admin_secret"
+}'
 ```
-
-You should get:
-```json
-{ "success": true }
-```
-
-Now log in at: `http://localhost:3000/admin`
 
 ---
 
@@ -181,22 +178,6 @@ Now log in at: `http://localhost:3000/admin`
 | `projects` | Portfolio projects (managed via admin) |
 | `projectupdates` | Changelog entries per project |
 | `admins` | Admin accounts (hashed passwords) |
-
----
-
-## 🔐 Admin Dashboard
-
-Access at `/admin` — **not linked in the navbar**, only you know it exists.
-
-### Features:
-- **Messages tab** — read/unread inbox, mark read, delete, reply via email
-- **Projects tab** — add, edit, delete projects (reflected live on `/projects`)
-
-### Auth Flow:
-1. POST `/api/auth/login` with email + password
-2. Server returns a **JWT token** (valid 7 days)
-3. Token stored in `localStorage`
-4. All admin API calls include `Authorization: Bearer <token>`
 
 ---
 
@@ -259,44 +240,6 @@ This project is fully deployed using **Render**.
 
 4. Add environment variable.
 ---
-
-## 🎨 Customization
-
-### Update Personal Info
-Replace placeholder content in these files:
-- `src/pages/Home.js` — name, title, description
-- `src/pages/About.js` — bio, skills, interests, goals
-- `src/pages/SkillsJourney.js` — skills, proficiency, timeline
-- `src/pages/Contact.js` — email, phone, location, social links
-- `src/components/Footer.js` — social links, name
-- `src/components/Navbar.js` — logo initials
-
-### Color Theme
-All red shades are CSS variables in `src/styles/global.css`:
-```css
---neon-primary: #ff2222;
---neon-secondary: #ff6666;
---neon-accent: #ff0044;
-```
-
----
-
-## 📦 Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Frontend | React.js 18, React Router v6 |
-| Styling | CSS3, Glassmorphism, Custom animations |
-| Backend | Node.js, Express.js |
-| Database | MongoDB Atlas + Mongoose |
-| Auth | JWT (jsonwebtoken) + bcryptjs |
-| Email | Nodemailer + Gmail |
-| SEO | react-helmet-async |
-| Deployment | Render (Frontend + Backend) |
-
----
-
-## ⚠️ Environment Variables Summary
 
 ### Frontend (`/.env`)
 ```
