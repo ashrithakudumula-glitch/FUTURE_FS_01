@@ -228,38 +228,36 @@ Access at `/admin` — **not linked in the navbar**, only you know it exists.
 
 ## 🚢 Deployment
 
-### Frontend — Netlify
+### 🌐 Frontend + Backend — Render
 
-1. Push to GitHub
-2. Connect repo on [netlify.com](https://netlify.com)
-3. Build settings:
-   - **Build command:** `npm run build`
-   - **Publish directory:** `build`
-4. Add environment variable:
-   ```
-   REACT_APP_API_URL=https://your-backend.railway.app/api
-   ```
-5. Add `public/_redirects` file:
-   ```
-   /* /index.html 200
-   ```
+This project is fully deployed using **Render**.
 
-### Backend — Railway
+### 🔹 Backend Deployment (Render)
 
-1. Go to [railway.app](https://railway.app) → New Project → Deploy from GitHub
-2. Select the `server/` folder as root
-3. Add all environment variables from `server/.env`
-4. Railway gives you a public URL like `https://your-app.railway.app`
-5. Use that URL as `REACT_APP_API_URL` in Netlify
+1. Go to https://render.com
+2. Create a **Web Service**
+3. Connect your GitHub repository
+4. Set:
+   - **Root Directory:** `server`
+   - **Build Command:** `npm install`
+   - **Start Command:** `npm start`
 
-### Alternative Backend — Render
+5. Add Environment Variables.
 
-1. Go to [render.com](https://render.com) → New Web Service
-2. Connect GitHub repo
-3. Set **Root Directory** to `server`
-4. Set **Start Command** to `npm start`
-5. Add all environment variables
 
+6. Click **Deploy**
+
+---
+
+### 🔹 Frontend Deployment (Render)
+
+1. Create a **Static Site** on Render
+2. Connect the same GitHub repo
+3. Set:
+   - **Build Command:** `npm install && npm run build`
+   - **Publish Directory:** `build`
+
+4. Add environment variable.
 ---
 
 ## 🎨 Customization
@@ -294,7 +292,7 @@ All red shades are CSS variables in `src/styles/global.css`:
 | Auth | JWT (jsonwebtoken) + bcryptjs |
 | Email | Nodemailer + Gmail |
 | SEO | react-helmet-async |
-| Deployment | Netlify (frontend) + Railway (backend) |
+| Deployment | Render (Frontend + Backend) |
 
 ---
 
@@ -317,6 +315,14 @@ EMAIL_USER=...
 EMAIL_PASS=...
 OWNER_EMAIL=...
 ```
+
+---
+
+### ⚠️ Important Notes
+
+- MongoDB Atlas must allow external connections (Network Access → Allow All)
+- Backend may take ~30 seconds to wake up (Render free tier)
+- Always use HTTPS URLs in production
 
 ---
 
