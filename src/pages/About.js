@@ -14,10 +14,9 @@ const SKILLS = [
 ];
 
 const INTERESTS = [
-  { emoji: '🎮', name: 'Game Dev' },
+  { emoji: '🎵', name: 'Dance' },
   { emoji: '🏀', name: 'Basketball' },
   { emoji: '📷', name: 'Photography' },
-  { emoji: '🎵', name: 'Dance' },
   { emoji: '✈️', name: 'Travel' },
   { emoji: '🏋️', name: 'Fitness' },
   { emoji: '📚', name: 'Reading' },
